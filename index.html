@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine 💖</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+}
+
+.card{
+  width:92%;
+  max-width:400px;
+  min-height:560px;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(15px);
+  border-radius:25px;
+  padding:30px 20px;
+  text-align:center;
+  color:white;
+  position:relative;
+  overflow:hidden;
+}
+
+h1{
+  font-size:22px;
+  margin-bottom:8px;
+}
+
+.subtitle{
+  font-size:14px;
+  margin-bottom:20px;
+}
+
+.characters{
+  font-size:65px;
+  margin-bottom:20px;
+}
+
+.question{
+  font-size:18px;
+  margin-bottom:25px;
+}
+
+.buttons{
+  position:relative;
+  height:80px;
+  width:100%;
+}
+
+button{
+  padding:12px 22px;
+  border:none;
+  border-radius:30px;
+  font-size:15px;
+  cursor:pointer;
+  position:absolute;
+}
+
+#yesBtn{
+  background:white;
+  color:#ff4d6d;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+#noBtn{
+  background:#ff4d6d;
+  color:white;
+}
+
+.hugGif{
+  display:none;
+  width:200px;
+  margin:20px auto;
+}
+
+.message{
+  display:none;
+  font-size:16px;
+  line-height:1.6;
+  margin-top:10px;
+  padding:0 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+
+  <h1>Happy Valentine's Day 💖</h1>
+  <div class="subtitle">From Neel – Your Loving Husband 🦉💍</div>
+
+  <div class="characters" id="characters">
+    🦉 &nbsp; 🐧
+  </div>
+
+  <div class="question" id="question">
+    Will you always be my Valentine, Madhu? 💕
+  </div>
+
+  <div class="buttons" id="buttons">
+    <button id="yesBtn">Yes, Always 💘</button>
+    <button id="noBtn">No 🙈</button>
+  </div>
+
+  <!-- Stable hug GIF (anime couple hugging) -->
+  <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjF5cG4wdjFqN2Uza3h3MXZ3M3NpcWF1dWM1dW9jOGpzOHV3MDN3bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/od5H3PmEG5EVq/giphy.gif"
+       class="hugGif"
+       id="hugGif">
+
+  <div class="message" id="loveMessage">
+    My beautiful wife 💞<br>
+    Every day with you feels like a beautiful dream. 🌸✨ &nbsp; You are my heart, my peace, and my forever happiness. 💕<br>
+    I promise to hug🤗 you everyday, protect you, and love you endlessly. 🤗💖<br>
+    I Love You Madhu 😍❤️ 
+    <br>
+    Your, OWl 🦉
+  </div>
+
+</div>
+
+<script>
+const card = document.getElementById("card");
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+
+function moveNoButton(){
+  const cardWidth = card.clientWidth;
+  const btnWidth = noBtn.offsetWidth;
+
+  const maxX = cardWidth - btnWidth - 20;
+  const maxY = 200;
+
+  noBtn.style.left = Math.random() * maxX + "px";
+  noBtn.style.top = Math.random() * maxY + 20 + "px";
+}
+
+// initial position
+moveNoButton();
+
+// move only on hover
+noBtn.addEventListener("mouseenter", moveNoButton);
+
+// mobile support
+noBtn.addEventListener("touchstart", function(e){
+  e.preventDefault();
+  moveNoButton();
+});
+
+yesBtn.addEventListener("click", function(){
+
+  // HIDE everything properly
+  document.getElementById("question").style.display = "none";
+  document.getElementById("characters").style.display = "none";
+  document.getElementById("buttons").style.display = "none";
+
+  // SHOW hug and message
+  document.getElementById("hugGif").style.display = "block";
+  document.getElementById("loveMessage").style.display = "block";
+});
+</script>
+
+</body>
+</html>
